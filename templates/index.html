@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <title>PROJET - INF8808</title>
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
@@ -39,7 +38,9 @@
 
         <section id="players-by-position">
             <h2>Statistiques pour l'ensemble des joueurs par positions</h2>
-            <p>TODO : Visualisation 4 à 9 dans la maquette pour tout les joueurs - pour les attaquants, milieux + défenseurs, défenseurs </p>
+            </br>
+            {% include "players_performance.html" %}
+            <!-- gg -->
         </section>
 
         <section id="subs-by-position">
@@ -51,6 +52,7 @@
             <h2>Les matchs dans le temps</h2>
             <p>TODO : Visualisation 13 pour les 7 matchs joués </p>
         </section>
+        </br>
     </main>
 
     <footer>

@@ -1,0 +1,65 @@
+<script src="/static/scripts/players_performance.js"></script>
+<link rel="stylesheet" href="/static/css/players_performance.css">
+<div id="nav-bar">
+    <button id="att-button" class="perf-button" onclick="showPlayerType('attackers', 'att-button')">Attaquants</button>
+    <button id="mid-button" class="perf-button" onclick="showPlayerType('mid', 'mid-button')">Milieux de terrain et défenseurs</button>
+    <button id="def-button" class="perf-button" onclick="showPlayerType('defenders', 'def-button')">Défenseurs</button>
+</div>
+
+<div id="attackers" class="content-section">
+    <div class="buttons-container">
+        <button id="att-matchs-button" class="perf-button" onclick="showContent('attackers-matchs')">À travers les matchs</button>
+        <button id="att-global-button" class="perf-button" onclick="showContent('attackers-global')">Global</button>
+    </div>
+    <div class="legend">
+        <div style="margin-right: 10px;"><span style="background-color: #fa7704; width: 20px; height: 20px; display: inline-block;"></span> Nombre de tirs tentés</div>
+        <div style="margin-right: 10px;"><span style="background-color: #fcab5a; width: 20px; height: 20px; display: inline-block;"></span> Nombre de tirs cadrés</div>
+        <div><span style="background-color: #ffe45b; width: 20px; height: 20px; display: inline-block;"></span> Nombre de tirs marqués</div>
+    </div>
+    <!-- Contenu pour les attaquants -->
+    <div id="attackers-matchs" class="graph-section">
+        {{ plot_att_matchs | safe }}
+    </div>
+    <div id="attackers-global" class="graph-section">
+        {{ plot_att_global | safe }}
+    </div>
+</div>
+
+<div id="mid" class="content-section">
+    <div class="buttons-container">
+        <button id="mid-matchs-button" class="perf-button" onclick="showContent('mid-matchs')">À travers les matchs</button>
+        <button id="mid-global-button" class="perf-button" onclick="showContent('mid-global')">Global</button>
+    </div>
+    <div class="legend">
+        <div style="margin-right: 10px;"><span style="background-color: #244fa0; width: 20px; height: 20px; display: inline-block;"></span> Nombre de passe décisive</div>
+        <div style="margin-right: 10px;"><span style="background-color: #5b87da; width: 20px; height: 20px; display: inline-block;"></span> Nombre de centres</div>
+        <div style="margin-right: 10px;"><span style="background-color: #97B54A; width: 20px; height: 20px; display: inline-block;"></span> Nombre d'interceptions</div>
+        <div><span style="background-color: #597318; width: 20px; height: 20px; display: inline-block;"></span> Nombre de tacles gagnés</div>
+    </div>
+    <!-- Contenu pour les milieux de terrain et défenseurs -->
+    <div id="mid-matchs" class="graph-section">
+        {{ plot_mid_matchs | safe }}
+    </div>
+    <div id="mid-global" class="graph-section">
+        {{ plot_mid_global | safe }}
+    </div>
+</div>
+
+<div id="defenders" class="content-section">
+    <div class="buttons-container">
+        <button id="def-matchs-button" class="perf-button" onclick="showContent('defenders-matchs')">À travers les matchs</button>
+        <button id="def-global-button" class="perf-button" onclick="showContent('defenders-global')">Global</button>
+    </div>
+    <div class="legend">
+        <div style="margin-right: 10px;"><span style="background-color: #97B54A; width: 20px; height: 20px; display: inline-block;"></span> Nombre d'interceptions</div>
+        <div><span style="background-color: #597318; width: 20px; height: 20px; display: inline-block;"></span> Nombre de tacles gagnés</div>
+    </div>
+
+    <!-- Contenu pour les défenseurs -->
+    <div id="defenders-matchs" class="graph-section">
+        {{ plot_def_matchs | safe }}
+    </div>
+    <div id="defenders-global" class="graph-section">
+        {{ plot_def_global | safe }}
+    </div>
+</div>
