@@ -1,5 +1,6 @@
 import pathlib
 import graphs.players_performance as pp
+import graphs.subs_performance as sp
 import graphs.statistiques_match as sm
 import graphs.time_matchs as tm
 from fastapi import FastAPI, Request # type: ignore
@@ -32,6 +33,12 @@ async def get_charts(request: Request):
     plot_def_global = pp.defenders_perf_global()
 
     # Partie 3 : Analyse des statistiques des joueurs remplaçants
+    plot_sub_att_matchs = sp.sub_attackers_perf_by_matchs()
+    plot_sub_att_global = sp.sub_attackers_perf_global()
+    plot_sub_mid_matchs = sp.sub_mid_perf_by_matchs()
+    plot_sub_mid_global = sp.sub_mid_perf_global()
+    plot_sub_def_matchs = sp.sub_defenders_perf_by_matchs()
+    plot_sub_def_global = sp.sub_defenders_perf_global()
 
     # Partie 4 :Analyse des matchs dans le temps
     plot_times_matchs = tm.decisives_actions_matchs()
@@ -49,7 +56,13 @@ async def get_charts(request: Request):
             "plot_mid_global": plot_mid_global,
             "plot_def_matchs": plot_def_matchs,
             "plot_def_global": plot_def_global,
-            # Partie 3 
+            # Partie 3
+            "plot_sub_att_matchs": plot_sub_att_matchs,
+            "plot_sub_att_global": plot_sub_att_global,
+            "plot_sub_mid_matchs": plot_sub_mid_matchs,
+            "plot_sub_mid_global": plot_sub_mid_global,
+            "plot_sub_def_matchs": plot_sub_def_matchs,
+            "plot_sub_def_global": plot_sub_def_global,
             # Partie 4
             "plot_times_matchs": plot_times_matchs
         }

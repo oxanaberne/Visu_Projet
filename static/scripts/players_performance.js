@@ -1,5 +1,5 @@
 function showPlayerType(playerType, buttonType) {
-    // Cachez tous les types de joueurs
+    // Cacher tous les types de joueurs
     document.querySelectorAll('.content-section').forEach(function(section) {
         section.style.display = 'none';
     });
@@ -28,16 +28,13 @@ function showPlayerType(playerType, buttonType) {
         document.getElementById('att-matchs-button').style.backgroundColor = '#00723f'; // couleur de non-sélection
         document.getElementById('mid-matchs-button').style.backgroundColor = '#00723f';
     }
-
 }
 
 function showContent(graphId) {
-    // Cachez tous les graphiques
+    // Cacher tous les graphiques
     document.querySelectorAll('.graph-section').forEach(function(section) {
         section.style.display = 'none';
     });
-
-    // Affichez le graphique sélectionné
     document.getElementById(graphId).style.display = 'flex';
 
     if (graphId === 'attackers-matchs' || graphId === 'mid-matchs' || graphId === 'defenders-matchs') {
