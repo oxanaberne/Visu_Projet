@@ -1,5 +1,6 @@
 import pathlib
 import players_performance as pp
+import ssl
 
 from fastapi import FastAPI, Request # type: ignore
 from fastapi.responses import HTMLResponse # type: ignore
@@ -7,6 +8,9 @@ from fastapi.templating import Jinja2Templates # type: ignore
 from fastapi.staticfiles import StaticFiles # type: ignore
 
 app = FastAPI()
+ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+ssl_context.load_cert_chain('cert.pem', keyfile='key.pem')
+
 BASE_DIR = pathlib.Path(__file__).parent
 templates = Jinja2Templates(directory=[
     BASE_DIR / "templates",
