@@ -34,6 +34,13 @@
         <section id="stat-matchs-global">
             <h2>Statistiques global des matchs</h2>
             <p>TODO : Visualisation 3 dans la maquette, pour les 7 matchs joués </p>
+            {% for match, plot in stat_matchs.items() %}
+            <section id="{{ match }}">
+                <h2>Statistics for {{ match }}</h2>
+                {{ plot | safe }}
+            </section>
+            {% endfor %}
+
         </section>
 
         <section id="players-by-position">

@@ -1,6 +1,6 @@
 import pathlib
 import players_performance as pp
-
+import statistiques_match as sm
 from fastapi import FastAPI, Request # type: ignore
 from fastapi.responses import HTMLResponse # type: ignore
 from fastapi.templating import Jinja2Templates # type: ignore
@@ -25,7 +25,7 @@ async def get_charts(request: Request):
     plot_mid_global = pp.mid_perf_global()
     plot_def_matchs = pp.defenders_perf_by_matchs()
     plot_def_global = pp.defenders_perf_global()
-
+    stat_matchs = sm.plot_totals()
     return templates.TemplateResponse(
         "index.html", 
         {
@@ -35,6 +35,8 @@ async def get_charts(request: Request):
             "plot_mid_matchs": plot_mid_matchs,
             "plot_mid_global": plot_mid_global,
             "plot_def_matchs": plot_def_matchs,
-            "plot_def_global": plot_def_global
+            "plot_def_global": plot_def_global,
+            "stat_matchs": stat_matchs
+
         }
     )
