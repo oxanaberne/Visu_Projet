@@ -8,8 +8,8 @@
 #TODO#Nombre de tacles réussis
 #CANTDO#Nombre de corners
 import pathlib
-import pandas as pd
-import plotly.graph_objects as go
+import pandas as pd # type: ignore
+import plotly.graph_objects as go # type: ignore
 import os
 import csv
 
