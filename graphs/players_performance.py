@@ -1,5 +1,5 @@
-import plotly.graph_objs as go
-from plotly.subplots import make_subplots
+import plotly.graph_objs as go # type: ignore
+from plotly.subplots import make_subplots # type: ignore
 
 def attackers_perf_by_matchs():
     players_data = {

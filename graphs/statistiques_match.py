@@ -13,7 +13,7 @@ import plotly.graph_objects as go
 import os
 import csv
 
-BASE_DIR = pathlib.Path(__file__).parent
+BASE_DIR = pathlib.Path(__file__).parent.parent
 
 def calculate_totals(df):
     return [
