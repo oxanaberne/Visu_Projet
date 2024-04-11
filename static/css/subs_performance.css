@@ -1,3 +1,8 @@
+#subs-by-position {
+    text-align: center;
+    padding-top: 10px;
+}
+
 #sub-nav-bar {
     display: flex;
     justify-content: center;

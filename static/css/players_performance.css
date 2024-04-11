@@ -1,3 +1,8 @@
+#players-by-position {
+    text-align: center;
+    padding-top: 10px;
+}
+
 #nav-bar {
     display: flex;
     justify-content: center;
@@ -34,6 +39,13 @@
     gap: 20px;
 }
 
+.legend {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
 .graph-section {
     display: none;
     width: 100%;
@@ -55,11 +67,4 @@
 .perf-button:hover {
     background-color: #003821;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-.legend {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px;
 }

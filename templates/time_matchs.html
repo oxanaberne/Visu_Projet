@@ -1,35 +1,34 @@
 <link rel="stylesheet" href="/static/css/time_matchs.css">
 
-<div>
-    <div class="legend">
-        <div class="legend-item">
-            <svg height="20" width="20">
-              <circle cx="10" cy="10" r="7" fill="#8ac000" stroke="#404040" stroke-width="2" />
-            </svg>
-            But pour
-          </div>
-          <div class="legend-item">
-            <svg height="20" width="20">
-              <circle cx="10" cy="10" r="7" fill="#c02300" stroke="#404040" stroke-width="2" />
-            </svg>
-            But contre
-          </div>
-          <div class="legend-item">
-            <svg height="20" width="15" viewBox="0 0 50 40">
-                <polygon points="0,0 40,20 0,40" fill="#5b87da" stroke="#404040" stroke-width="6" />
-                <rect x="40" y="0" width="7" height="40" fill="#404040" />
-            </svg>
-            Changements
-          </div>
-          
-          <div class="legend-item">
-            <svg height="20" width="20">
-              <rect x="5" y="5" width="10" height="10" fill="#ffe100" transform="rotate(45, 10, 10)" stroke="#404040" stroke-width="2" />
-            </svg>
-            Cartons jaunes
-          </div>          
-    </div>
-    <div>
-        {{ plot_times_matchs | safe }}
-    </div>
+<h2>Les matchs dans le temps</h2>
+<div class="legend">
+  <div class="legend-item">
+    <svg height="20" width="20">
+      <circle cx="10" cy="10" r="7" fill="#8ac000" stroke="#404040" stroke-width="2" />
+    </svg>
+    But pour
+  </div>
+  <div class="legend-item">
+    <svg height="20" width="20">
+      <circle cx="10" cy="10" r="7" fill="#c02300" stroke="#404040" stroke-width="2" />
+    </svg>
+    But contre
+  </div>
+  <div class="legend-item">
+    <svg height="20" width="15" viewBox="0 0 50 40">
+        <polygon points="0,0 40,20 0,40" fill="#5b87da" stroke="#404040" stroke-width="6" />
+        <rect x="40" y="0" width="7" height="40" fill="#404040" />
+    </svg>
+    Changements
+  </div>
+
+  <div class="legend-item">
+    <svg height="20" width="20">
+      <rect x="5" y="5" width="10" height="10" fill="#ffe100" transform="rotate(45, 10, 10)" stroke="#404040" stroke-width="2" />
+    </svg>
+    Cartons jaunes
+  </div>
+</div>
+<div class="legend">
+    {{ plot_times_matchs | safe }}
 </div>

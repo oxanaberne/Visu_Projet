@@ -7,3 +7,16 @@ svg {
     padding-top: 3px;
     padding-right: 3px;
 }
+
+#stat-match-by-times {
+    text-align: center;
+    padding-top: 10px;
+}
+
+.legend {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    text-align: center;
+}

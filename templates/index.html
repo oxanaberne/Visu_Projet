@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
+<link rel="stylesheet" href="/static/css/style.css">
 <head>
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <title>PROJET - INF8808</title>
-    <link rel="stylesheet" href="/static/css/style.css">
+    
 </head>
 <body>
     <header>
@@ -33,7 +34,6 @@
 
         <section id="stat-matchs-global">
             <h2>Statistiques global des matchs</h2>
-            <p>TODO : Visualisation 3 dans la maquette, pour les 7 matchs joués </p>
             {% for match, plot in stat_matchs.items() %}
             <section id="{{ match }}">
                 <h2>Statistics for {{ match }}</h2>
@@ -44,19 +44,14 @@
         </section>
 
         <section id="players-by-position">
-            <h2>Statistiques pour l'ensemble des joueurs par positions</h2>
-            </br>
             {% include "players_performance.html" %}
         </section>
 
         <section id="subs-by-position">
-            <h2>Statistiques des joueurs remplaçants par positions</h2>
-            <p>TODO : Visualisation 4/6/8 dans la maquette pour tout les remplaçants - pour les attaquants, milieux + défenseurs, défenseurs </p>
             {% include "subs_performance.html" %}
         </section>
 
         <section id="stat-match-by-times">
-            <h2>Les matchs dans le temps</h2>
             {% include "time_matchs.html" %}
         </section>
         </br>
