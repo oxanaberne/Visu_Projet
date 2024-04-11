@@ -26,19 +26,19 @@ async def get_charts(request: Request):
 
     # Partie 2 : Analyse des statistiques de l'ensemble des joueurs
     plot_att_matchs = pp.attackers_perf_by_matchs()
-    plot_att_global = pp.attackers_perf_global()
+    plot_att_global = pp.attackers_perf_global() #TODO
     plot_mid_matchs = pp.mid_perf_by_matchs()
-    plot_mid_global = pp.mid_perf_global()
+    plot_mid_global = pp.mid_perf_global() #TODO
     plot_def_matchs = pp.defenders_perf_by_matchs()
-    plot_def_global = pp.defenders_perf_global()
+    plot_def_global = pp.defenders_perf_global() #TODO
 
     # Partie 3 : Analyse des statistiques des joueurs remplaçants
     plot_sub_att_matchs = sp.sub_attackers_perf_by_matchs()
-    plot_sub_att_global = sp.sub_attackers_perf_global()
+    plot_sub_att_global = sp.sub_attackers_perf_global() #TODO
     plot_sub_mid_matchs = sp.sub_mid_perf_by_matchs()
-    plot_sub_mid_global = sp.sub_mid_perf_global()
+    plot_sub_mid_global = sp.sub_mid_perf_global() #TODO
     plot_sub_def_matchs = sp.sub_defenders_perf_by_matchs()
-    plot_sub_def_global = sp.sub_defenders_perf_global()
+    plot_sub_def_global = sp.sub_defenders_perf_global() #TODO
 
     # Partie 4 :Analyse des matchs dans le temps
     plot_times_matchs = tm.decisives_actions_matchs()
