@@ -26,7 +26,6 @@ def decisives_actions_matchs():
                     )
                 ),
                 legendgroup=event_type,
-                showlegend=(match == 'Match 1')
             ))
 
     fig.update_layout(

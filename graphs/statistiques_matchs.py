@@ -53,7 +53,7 @@ def plot_totals(filename):
         barmode='relative',
         xaxis=dict(
             showticklabels=False,
-            showgrid=True,
+            showgrid=False,
             zeroline=True,
             zerolinewidth=2,
             zerolinecolor='black'
@@ -62,7 +62,7 @@ def plot_totals(filename):
             automargin=True
         ),
         plot_bgcolor='white',
-        width=900
+        width=800
     )
 
     return fig.to_html(full_html=False, config={'displayModeBar': False})
