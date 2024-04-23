@@ -32,7 +32,7 @@ def draw_graph_attackers(data):
             ), row=row, col=col)
 
     fig.update_layout(
-        height=800, width=900,
+        width=850,
         showlegend=False,
         barmode='stack'
     )
@@ -75,7 +75,7 @@ def draw_graph_mid(data):
             ), row=row, col=col)
 
     fig.update_layout(
-        height=1000, width=900,
+        width=850,
         showlegend=False,
         barmode='stack'
     )
@@ -106,7 +106,7 @@ def draw_graph_defenders(data):
             ), row=row, col=col)
 
     fig.update_layout(
-        height=600, width=900,
+        width=850,
         showlegend=False,
         barmode='stack'
     )

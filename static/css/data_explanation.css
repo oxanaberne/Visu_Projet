@@ -1,0 +1,25 @@
+#data-explaination {
+    text-align: center;
+    padding: 5%;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+ul {
+    list-style-type: none;
+}
+
+ul li::before {
+    content: '•';
+    display: inline-block;
+    margin-right: 10px;
+}
+  
+ul li {
+    padding-left: 20px;
+    position: relative;
+}
+
+.texte {
+    text-align: justify;
+}

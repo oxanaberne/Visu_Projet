@@ -29,7 +29,7 @@ def decisives_actions_matchs():
             ))
 
     fig.update_layout(
-        width=900,
+        width=850,
         showlegend=False,
         xaxis=dict(
             range=[-5, 130],
@@ -42,6 +42,7 @@ def decisives_actions_matchs():
             categoryorder='array',
             categoryarray=[f'Match {i}' for i in range(1, 8)]
         ),
+        margin=dict(l=0, r=0, t=0, b=0)
     )
 
     return fig.to_html(full_html=False, config={'displayModeBar': False})

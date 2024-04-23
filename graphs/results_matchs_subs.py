@@ -34,10 +34,11 @@ def draw_results_per_player():
     ))
 
     fig.update_layout(
-        width=800,
+        width=850,
         height=400,
         showlegend=False,
-        barmode='stack'
+        barmode='stack',
+        margin=dict(l=0, r=0, t=0, b=0)
     )
     fig.update_yaxes(tick0=0, dtick=1)
 

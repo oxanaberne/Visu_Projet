@@ -6,6 +6,14 @@
     text-align: center;
 }
 
+.graph-subs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    text-align: center;
+}
+
 #subs-by-results {
     text-align: center;
     padding-top: 10px;

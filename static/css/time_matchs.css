@@ -3,20 +3,28 @@
     padding: 10px;
 }
 
-svg {
-    padding-top: 3px;
-    padding-right: 3px;
-}
-
-#stat-match-by-times {
-    text-align: center;
-    padding-top: 10px;
-}
-
 .legend {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 20px;
     text-align: center;
+}
+
+svg {
+    padding-top: 3px;
+    padding-right: 3px;
+}
+
+.graph-time {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    text-align: center;
+}
+
+#stat-match-by-times {
+    text-align: center;
+    padding-top: 10px;
 }

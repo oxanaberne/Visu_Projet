@@ -13,23 +13,7 @@
 
     <main>
         <section id="overview">
-            <p>Dans le tourbillon d'émotions et de passion qu'est la Coupe d'Afrique des Nations,
-            chaque passe, chaque tir et chaque but raconte une histoire. En 2023, la scène africaine
-            du football a été témoin d'une édition exceptionnelle, riche en compétitivité, en talent
-            et en moments inoubliables. Au cœur de cet événement, l'équipe de la Côte d'Ivoire s'est
-            distinguée, non seulement par son jeu, mais aussi par l'esprit avec lequel elle a disputé
-            chaque match. Notre projet puise dans un jeu de données unique, recueilli avec rigueur
-            tout au long de la CAN 2023 et des phases de qualification. Ce trésor de données, qui
-            couvre à la fois les performances individuelles des joueurs et les efforts collectifs
-            de l'équipe, offre un terrain pour une exploration en profondeur des dynamiques 
-            du football moderne. De la précision des passes à l'efficacité devant le but, en passant
-            par la stratégie de jeu et la cohésion d'équipe, notre plateforme propose une immersion
-            dans les aspects quantitatifs et qualitatifs qui ont défini le parcours de la Côte d'Ivoire.
-            Grâce à des visualisations de données avancées, nous vous invitons à plonger au-delà des 
-            scores et des résultats. Explorez les forces, les faiblesses, les stratégies et les 
-            performances clés qui ont jalonné la campagne de la Côte d'Ivoire. 
-            Rejoignez-nous dans cette aventure analytique pour redécouvrir la CAN 2023 à travers les yeux
-            de l'équipe de la Côte d'Ivoire, et voyez le football sous un jour nouveau.</p>
+            {% include "introduction.html" %}
         </section>
 
         <section id="stat-matchs-global">
@@ -50,6 +34,10 @@
 
         <section id="stat-match-by-times">
             {% include "time_matchs.html" %}
+        </section>
+
+        <section id="data-explaination">
+            {% include "data_explanation.html" %}
         </section>
         </br>
     </main>

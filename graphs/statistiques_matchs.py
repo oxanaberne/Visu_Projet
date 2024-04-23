@@ -62,7 +62,7 @@ def plot_totals(filename):
             automargin=True
         ),
         plot_bgcolor='white',
-        width=800
+        width=850
     )
 
     return fig.to_html(full_html=False, config={'displayModeBar': False})
