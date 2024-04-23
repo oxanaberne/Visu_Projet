@@ -62,7 +62,7 @@ def plot_totals(filename):
             automargin=True
         ),
         plot_bgcolor='white',
-        width=850,
+        width=650,
         height=350,
         margin=dict(l=0, r=0, t=0, b=0)
     )

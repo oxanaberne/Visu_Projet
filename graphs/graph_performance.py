@@ -32,9 +32,10 @@ def draw_graph_attackers(data):
             ), row=row, col=col)
 
     fig.update_layout(
-        width=850,
+        width=650,
         showlegend=False,
-        barmode='stack'
+        barmode='stack',
+        margin=dict(l=0, r=0, t=0, b=0)
     )
     return fig.to_html(full_html=False, config={'displayModeBar': False})
 
@@ -75,9 +76,10 @@ def draw_graph_mid(data):
             ), row=row, col=col)
 
     fig.update_layout(
-        width=850,
+        width=650,
         showlegend=False,
-        barmode='stack'
+        barmode='stack',
+        margin=dict(l=0, r=0, t=0, b=0)
     )
     return fig.to_html(full_html=False, config={'displayModeBar': False})
 
@@ -106,8 +108,9 @@ def draw_graph_defenders(data):
             ), row=row, col=col)
 
     fig.update_layout(
-        width=850,
+        width=650,
         showlegend=False,
-        barmode='stack'
+        barmode='stack',
+        margin=dict(l=0, r=0, t=0, b=0)
     )
     return fig.to_html(full_html=False, config={'displayModeBar': False})

@@ -34,7 +34,7 @@ def draw_results_per_player():
     ))
 
     fig.update_layout(
-        width=850,
+        width=650,
         height=400,
         showlegend=False,
         barmode='stack',

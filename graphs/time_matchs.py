@@ -29,10 +29,10 @@ def decisives_actions_matchs():
             ))
 
     fig.update_layout(
-        width=850,
+        width=650,
         showlegend=False,
         xaxis=dict(
-            range=[-5, 130],
+            range=[-3, 123],
             title='Minutes',
             tickmode='linear',
             tick0=0,
