@@ -67,29 +67,29 @@ def plot_totals(filename):
     return fig.to_html(full_html=False, config={'displayModeBar': False})
 
 def stat_match1():
-    filename = os.path.join(BASE_DIR, 'donne_match/Match 1 - Guinea-Bissau/', 'df2.csv')
+    filename = os.path.join(BASE_DIR, 'data/Match 1 - Guinea-Bissau/', 'df2.csv')
     return plot_totals(filename)
 
 def stat_match2():
-    filename = os.path.join(BASE_DIR, 'donne_match/Match 2 - Nigeria/', 'df2.csv')
+    filename = os.path.join(BASE_DIR, 'data/Match 2 - Nigeria/', 'df2.csv')
     return plot_totals(filename)
 
 def stat_match3():
-    filename = os.path.join(BASE_DIR, 'donne_match/Match 3 - Equatorial-Guinea/', 'df2.csv')
+    filename = os.path.join(BASE_DIR, 'data/Match 3 - Equatorial-Guinea/', 'df2.csv')
     return plot_totals(filename)
 
 def stat_match4():
-    filename = os.path.join(BASE_DIR, 'donne_match/Match 4 - Senegal/', 'df2.csv')
+    filename = os.path.join(BASE_DIR, 'data/Match 4 - Senegal/', 'df2.csv')
     return plot_totals(filename)
 
 def stat_match5():
-    filename = os.path.join(BASE_DIR, 'donne_match/Match 5 - Mali/', 'df2.csv')
+    filename = os.path.join(BASE_DIR, 'data/Match 5 - Mali/', 'df2.csv')
     return plot_totals(filename)
 
 def stat_match6():
-    filename = os.path.join(BASE_DIR, 'donne_match/Match 6 - Congo DR/', 'df2.csv')
+    filename = os.path.join(BASE_DIR, 'data/Match 6 - Congo DR/', 'df2.csv')
     return plot_totals(filename)
 
 def stat_match7():
-    filename = os.path.join(BASE_DIR, 'donne_match/Match 7 - Nigeria/', 'df2.csv')
+    filename = os.path.join(BASE_DIR, 'data/Match 7 - Nigeria/', 'df2.csv')
     return plot_totals(filename)
