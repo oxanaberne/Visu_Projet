@@ -33,14 +33,7 @@
         </section>
 
         <section id="stat-matchs-global">
-            <h2>Statistiques global des matchs</h2>
-            {% for match, plot in stat_matchs.items() %}
-            <section id="{{ match }}">
-                <h2>Statistics for {{ match }}</h2>
-                {{ plot | safe }}
-            </section>
-            {% endfor %}
-
+            {% include "statistiques_matchs.html" %}
         </section>
 
         <section id="players-by-position">

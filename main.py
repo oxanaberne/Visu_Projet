@@ -1,7 +1,7 @@
 import pathlib
 import graphs.players_performance as pp
 import graphs.subs_performance as sp
-import graphs.statistiques_match as sm
+import graphs.statistiques_matchs as sm
 import graphs.time_matchs as tm
 from fastapi import FastAPI, Request # type: ignore
 from fastapi.responses import HTMLResponse # type: ignore
@@ -22,7 +22,13 @@ app.mount(
 @app.get("/", response_class=HTMLResponse)
 async def get_charts(request: Request):
     # Partie 1 : Analyse statistiques global des matchs
-    stat_matchs = sm.plot_totals()
+    plot_match1 = sm.stat_match1()
+    plot_match2 = sm.stat_match2()
+    plot_match3 = sm.stat_match3()
+    plot_match4 = sm.stat_match4()
+    plot_match5 = sm.stat_match5()
+    plot_match6 = sm.stat_match6()
+    plot_match7 = sm.stat_match7()
 
     # Partie 2 : Analyse des statistiques de l'ensemble des joueurs
     plot_att_matchs = pp.attackers_perf_by_matchs()
@@ -48,7 +54,13 @@ async def get_charts(request: Request):
         {
             "request": request,
             # Partie 1
-            "stat_matchs": stat_matchs,
+            "plot_match1": plot_match1,
+            "plot_match2": plot_match2,
+            "plot_match3": plot_match3,
+            "plot_match4": plot_match4,
+            "plot_match5": plot_match5,
+            "plot_match6": plot_match6,
+            "plot_match7": plot_match7,
             # Partie 2 
             "plot_att_matchs": plot_att_matchs,
             "plot_att_global": plot_att_global,
