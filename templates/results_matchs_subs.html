@@ -1,0 +1,10 @@
+<link rel="stylesheet" href="/static/css/results_matchs_subs.css">
+
+<h2>Compte des résultats de match pour les remplaçants</h2>
+<div class="legend">
+    <div style="margin-right: 10px;"><span style="background-color: #97B54A; width: 20px; height: 20px; display: inline-block;"></span> Nombre de victoires</div>
+    <div><span style="background-color: #b54a4a; width: 20px; height: 20px; display: inline-block;"></span> Nombre de défaites</div>
+</div>
+<div class="legend">
+    {{ plot_results_subs | safe }}
+</div>
