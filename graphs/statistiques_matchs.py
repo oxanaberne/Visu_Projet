@@ -19,12 +19,30 @@ def plot_totals(filename):
     for country, stat in data_dict.items():
         if country == 'Côte d\'Ivoire':
             homeName = country
+            homeGoal = stat['Goals']
             homeDict = stat
+            del homeDict['Goals']
+            del homeDict['Cards']
         else :
             opponentName = country
+            opponentGoal = stat['Goals']
             opponentDict = stat
+            del opponentDict['Goals']
+            del opponentDict['Cards']
 
     fig = go.Figure()
+    fig.add_annotation(
+        go.layout.Annotation(
+            text=f"{homeGoal} - {opponentGoal}",
+            xref="paper", x=0.5,  # Positionne l'annotation au centre en largeur
+            yref="paper", y=1.01,  # Positionne l'annotation en hauteur
+            xanchor='center',  # Centre le texte par rapport à sa position en x
+            yanchor='bottom',  # Align le texte par le bas par rapport à sa position en y
+            showarrow=False,
+            font=dict(size=30),
+        ),
+    )
+
     fig.add_trace(go.Bar(
         name=homeName,
         y=list(homeDict.keys()),
@@ -64,7 +82,14 @@ def plot_totals(filename):
         plot_bgcolor='white',
         width=650,
         height=350,
-        margin=dict(l=0, r=0, t=0, b=0)
+        margin=dict(l=0, r=0, t=80, b=0),
+        legend=dict(
+            orientation="h",
+            yanchor="bottom",
+            y=1.2,
+            xanchor="center",
+            x=0.5
+        ),
     )
 
     return fig.to_html(full_html=False, config={'displayModeBar': False})
