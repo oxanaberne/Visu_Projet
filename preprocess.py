@@ -10,23 +10,35 @@ midfielders = ["DM", "CM", "LM", "RM", "WM", "AM", "MF"]
 def getPlayersData():
     playersData = {}
     match_1 = getPlayersDataByMatch("Match 1 - Guinea-Bissau")
+    playersData['Match 1'] = createDictForPlayersInMatch(match_1)
+
     match_2 = getPlayersDataByMatch("Match 2 - Nigeria")
+    playersData['Match 2'] = createDictForPlayersInMatch(match_2)
+
     match_3 = getPlayersDataByMatch("Match 3 - Equatorial-Guinea")
+    playersData['Match 3'] = createDictForPlayersInMatch(match_3)
+
     match_4 = getPlayersDataByMatch("Match 4 - Senegal")
+    playersData['Match 4'] = createDictForPlayersInMatch(match_4)
+
     match_5 = getPlayersDataByMatch("Match 5 - Mali")
+    playersData['Match 5'] = createDictForPlayersInMatch(match_5)
+
     match_6 = getPlayersDataByMatch("Match 6 - Congo DR")
+    playersData['Match 6'] = createDictForPlayersInMatch(match_6)
+
     match_7 = getPlayersDataByMatch("Match 7 - Nigeria")
-
-    matches = [match_1, match_2, match_3, match_4, match_5, match_6, match_7]
-
-    for player in matches:
-        for key, value in player.items():
-            if key in playersData:
-                playersData[key] += value
-            else:
-                playersData[key] = value
+    playersData['Match 7'] = createDictForPlayersInMatch(match_7)
     return playersData
 
+def createDictForPlayersInMatch(match):
+    dict = {}
+    for name, stat in match.items():
+        if name in dict:
+            dict[name] += stat
+        else:
+            dict[name] = stat
+    return dict
 
 def getPlayersDataByMatch(match):
     filename = os.path.join(BASE_DIR, f"data/{match}/", "df3.csv")
@@ -80,4 +92,4 @@ def getPlayersGlobalPerformances():
                 "interceptions": int(float(line[7])),
             }
         ]
-    return players_stats
+    return {'Global': players_stats}

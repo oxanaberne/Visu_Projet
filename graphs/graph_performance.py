@@ -2,11 +2,10 @@ import plotly.graph_objs as go # type: ignore
 from plotly.subplots import make_subplots # type: ignore
 
 def draw_graph_attackers(data):
-    num_players = len(data)
-    rows = (num_players + 2) // 3 
+    rows = (len(data) + 2) // 3 
     cols = 3
 
-    # du plus foncé au plus claire
+    # Du plus foncé au plus claire
     colors = ['#fa7704', '#fcab5a', '#ffe45b']
 
     # Petit multiple avec Plotly pour chaque joueur
@@ -48,11 +47,9 @@ def draw_graph_attackers(data):
     return fig.to_html(full_html=False, config={'displayModeBar': False})
 
 def draw_graph_mid(data):
-
-    num_players = len(data)
-    rows = (num_players + 2) // 3 
+    rows = (len(data) + 2) // 3 
     cols = 3
-    # passe, centres, interception, tacles
+    # Passe, Centres, Interception, Tacles
     colors = ['#244fa0', '#5b87da', '#97B54A', '#597318']
 
     # Petit multiple avec Plotly pour chaque joueur
@@ -99,10 +96,9 @@ def draw_graph_mid(data):
     return fig.to_html(full_html=False, config={'displayModeBar': False})
 
 def draw_graph_defenders(data):
-    num_players = len(data)
-    rows = (num_players + 2) // 3 
+    rows = (len(data) + 2) // 3 
     cols = 3
-    # interception, tacles
+    # Interception, Tacles
     colors = ['#97B54A', '#597318']
 
     # Petit multiple avec Plotly pour chaque joueur
