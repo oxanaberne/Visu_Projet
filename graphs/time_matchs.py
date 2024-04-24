@@ -26,14 +26,13 @@ def decisives_actions_matchs():
                     )
                 ),
                 legendgroup=event_type,
-                showlegend=(match == 'Match 1')
             ))
 
     fig.update_layout(
-        width=900,
+        width=650,
         showlegend=False,
         xaxis=dict(
-            range=[-5, 130],
+            range=[-3, 123],
             title='Minutes',
             tickmode='linear',
             tick0=0,
@@ -43,6 +42,7 @@ def decisives_actions_matchs():
             categoryorder='array',
             categoryarray=[f'Match {i}' for i in range(1, 8)]
         ),
+        margin=dict(l=0, r=0, t=0, b=0)
     )
 
     return fig.to_html(full_html=False, config={'displayModeBar': False})

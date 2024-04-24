@@ -1,6 +1,7 @@
 import pathlib
 import graphs.players_performance as pp
 import graphs.subs_performance as sp
+import graphs.results_matchs_subs as rm
 import graphs.statistiques_matchs as sm
 import graphs.time_matchs as tm
 import preprocess as pr
@@ -49,6 +50,7 @@ async def get_charts(request: Request):
     plot_sub_mid_global = sp.sub_mid_perf_global() #TODO
     plot_sub_def_matchs = sp.sub_defenders_perf_by_matchs()
     plot_sub_def_global = sp.sub_defenders_perf_global() #TODO
+    plot_results_subs = rm.draw_results_per_player()
 
     # Partie 4 :Analyse des matchs dans le temps
     plot_times_matchs = tm.decisives_actions_matchs()
@@ -79,6 +81,7 @@ async def get_charts(request: Request):
             "plot_sub_mid_global": plot_sub_mid_global,
             "plot_sub_def_matchs": plot_sub_def_matchs,
             "plot_sub_def_global": plot_sub_def_global,
+            "plot_results_subs": plot_results_subs,
             # Partie 4
             "plot_times_matchs": plot_times_matchs
         }

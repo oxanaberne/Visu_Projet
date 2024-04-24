@@ -21,15 +21,6 @@ header h1 {
     margin-bottom: 10px;
 }
 
-/* Contenu principal */
-main {
-    padding: 20px;
-}
-
-section {
-    margin-bottom: 20px;
-}
-
 /* Pied de page */
 footer {
     background-color: #003821; /* Vert plus sombre */

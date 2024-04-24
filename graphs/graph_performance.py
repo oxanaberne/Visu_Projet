@@ -40,9 +40,10 @@ def draw_graph_attackers(data):
 
 
     fig.update_layout(
-        height=800, width=1000,
+        width=650,
         showlegend=False,
-        barmode='stack'
+        barmode='stack',
+        margin=dict(l=0, r=0, t=0, b=0)
     )
     return fig.to_html(full_html=False, config={'displayModeBar': False})
 
@@ -90,9 +91,10 @@ def draw_graph_mid(data):
             fig.update_yaxes(tickmode='array', tickvals=[i + 1 for i in range(len(stats))], row=row, col=col)
 
     fig.update_layout(
-        height=1000, width=1000,
+        width=650,
         showlegend=False,
-        barmode='stack'
+        barmode='stack',
+        margin=dict(l=0, r=0, t=0, b=0)
     )
     return fig.to_html(full_html=False, config={'displayModeBar': False})
 
@@ -127,8 +129,9 @@ def draw_graph_defenders(data):
             fig.update_yaxes(tickmode='array', tickvals=[i + 1 for i in range(len(stats))], row=row, col=col)
 
     fig.update_layout(
-        height=600, width=1000,
+        width=650,
         showlegend=False,
-        barmode='stack'
+        barmode='stack',
+        margin=dict(l=0, r=0, t=0, b=0)
     )
     return fig.to_html(full_html=False, config={'displayModeBar': False})

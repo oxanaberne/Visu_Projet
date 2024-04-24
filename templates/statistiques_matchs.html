@@ -1,24 +1,44 @@
+<script src="/static/scripts/statistiques_matchs.js"></script>
 <link rel="stylesheet" href="/static/css/statistiques_matchs.css">
 
 <h2>Statistiques global des matchs</h2>
-<div>
+<p class="texte">
+    Les graphiques ci-dessous offrent un aperçu des statistiques clés qui ont façonné les performances
+    des équipes de la Côte d'Ivoire contre les équipes adverses au fil de leur sept matchs. Chaque barre
+    colorée et chaque chiffre illustre non seulement l'issue de chaque match en termes de buts, 
+    interceptions et possessions, mais dépeint également le dynamisme stratégique et la précision 
+    technique qui ont été déployés sur le terrain. De l'agilité défensive aux tirs cadrés, ces visualisations 
+    transforment les données brutes pour vous permettre de saisir l'essence de chaque match. Explorez 
+    les différentes statistiques des matchs à travers les différents onglets.
+</p>
+<div id="nav-bar-match">
+    <button id="match1-button" class="match-button" onclick="showMatch('match1')" style="background-color: #003821;">Match 1</button>
+    <button id="match2-button" class="match-button" onclick="showMatch('match2')">Match 2</button>
+    <button id="match3-button" class="match-button" onclick="showMatch('match3')">Match 3</button>
+    <button id="match4-button" class="match-button" onclick="showMatch('match4')">Match 4</button>
+    <button id="match5-button" class="match-button" onclick="showMatch('match5')">Match 5</button>
+    <button id="match6-button" class="match-button" onclick="showMatch('match6')">Match 6</button>
+    <button id="match7-button" class="match-button" onclick="showMatch('match7')">Match 7</button>
+</div>
+
+<div id="match1" class="graph" style="display: flex;">
     {{ plot_match1 | safe }}
 </div>
-<div>
+<div id="match2" class="graph">
     {{ plot_match2 | safe }}
 </div>
-<div>
+<div id="match3" class="graph">
     {{ plot_match3 | safe }}
 </div>
-<div>
+<div id="match4" class="graph">
     {{ plot_match4 | safe }}
 </div>
-<div>
+<div id="match5" class="graph">
     {{ plot_match5 | safe }}
 </div>
-<div>
+<div id="match6" class="graph">
     {{ plot_match6 | safe }}
 </div>
-<div>
+<div id="match7" class="graph">
     {{ plot_match7 | safe }}
 </div>

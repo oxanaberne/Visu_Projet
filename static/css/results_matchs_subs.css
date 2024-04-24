@@ -1,9 +1,12 @@
-.legend-item {
+.legend {
     display: flex;
-    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3%;
+    text-align: center;
 }
 
-.legend {
+.graph-subs {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -11,12 +14,7 @@
     text-align: center;
 }
 
-svg {
-    padding-top: 3px;
-    padding-right: 3px;
-}
-
-#stat-match-by-times {
+#subs-by-results {
     text-align: center;
     padding-top: 10px;
 }

@@ -1,0 +1,33 @@
+#nav-bar-match {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#stat-matchs-global {
+    text-align: center;
+    padding-top: 10px;
+}
+
+.graph {
+    display: none;
+    width: 100%;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.match-button{
+    padding: 10px 20px;
+    border: none;
+    background-color: #00723f;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.match-button:hover {
+    background-color: #003821;
+}
+
