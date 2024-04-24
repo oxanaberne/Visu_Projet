@@ -3,7 +3,7 @@ from plotly.subplots import make_subplots # type: ignore
 
 y_label = ['Match 1', 'Match 2', 'Match 3', 'Match 4', 'Match 5', 'Match 6', 'Match 7', 'Global'] 
 
-def draw_graph_attackers(data):
+def drawGraphAttackers(data):
     rows = (len(data) + 1) // 2 
     cols = 2
     # Du plus foncé au plus claire
@@ -48,7 +48,7 @@ def draw_graph_attackers(data):
     )
     return fig.to_html(full_html=False, config={'displayModeBar': False})
 
-def draw_graph_mid(data):
+def drawGraphMid(data):
     rows = (len(data) + 1) // 2 
     cols = 2
     # Passe, Centres, Interception, Tacles
@@ -100,7 +100,7 @@ def draw_graph_mid(data):
     )
     return fig.to_html(full_html=False, config={'displayModeBar': False})
 
-def draw_graph_defenders(data):
+def drawGraphDefenders(data):
     rows = (len(data) + 1) // 2 
     cols = 2
     # Interception, Tacles

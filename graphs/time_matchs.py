@@ -3,19 +3,19 @@ import numpy as np # type: ignore
 from data.time_matchs_data import data
 import random
 
-def decisives_actions_matchs():
+def decisivesActionsMatchs():
     # But pour, But contre, Changements, Cartons jaunes
     colors = ['#8ac000', '#c02300', '#5b87da', '#ffe100']
     symbols = ['circle', 'circle', 'arrow-bar-right', 'diamond']
 
     fig = go.Figure()
     for match, events in data.items():
-        for idx, (event_type, times) in enumerate(events.items()):
+        for idx, (eventType, times) in enumerate(events.items()):
             fig.add_trace(go.Scatter(
                 x=times,
                 y=[match] * len(times),
                 mode='markers',
-                name=event_type,
+                name=eventType,
                 marker=dict(
                     color=colors[idx],
                     symbol=symbols[idx],
@@ -25,7 +25,7 @@ def decisives_actions_matchs():
                         color='DarkSlateGrey'
                     )
                 ),
-                legendgroup=event_type,
+                legendgroup=eventType,
             ))
 
     fig.update_layout(

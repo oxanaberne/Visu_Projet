@@ -24,52 +24,50 @@ app.mount(
 @app.get("/", response_class=HTMLResponse)
 async def get_charts(request: Request):
     # Partie 1 : Analyse statistiques global des matchs
-    plot_match1 = sm.stat_match1()
-    plot_match2 = sm.stat_match2()
-    plot_match3 = sm.stat_match3()
-    plot_match4 = sm.stat_match4()
-    plot_match5 = sm.stat_match5()
-    plot_match6 = sm.stat_match6()
-    plot_match7 = sm.stat_match7()
-
-    get_players_data = pr.getPlayersData()
+    plotMatch1 = sm.plotStatMatch1()
+    plotMatch2 = sm.plotStatMatch2()
+    plotMatch3 = sm.plotStatMatch3()
+    plotMatch4 = sm.plotStatMatch4()
+    plotMatch5 = sm.plotStatMatch5()
+    plotMatch6 = sm.plotStatMatch6()
+    plotMatch7 = sm.plotStatMatch7()
 
     # Partie 2 : Analyse des statistiques de l'ensemble des joueurs
-    plot_att_matchs = pp.attackers_perf(get_players_data)
-    plot_mid_matchs = pp.mid_perf(get_players_data)
-    plot_def_matchs = pp.defenders_perf(get_players_data)
+    plotAttMatchs = pp.attackersPerformances()
+    plotMidMatchs = pp.midfieldersPerformances()
+    plotDefMatchs = pp.defendersPerformances()
 
     # Partie 3 : Analyse des statistiques des joueurs remplaçants
-    plot_sub_att_matchs = sp.attackers_perf(get_players_data)
-    plot_sub_mid_matchs = sp.mid_perf(get_players_data)
-    plot_sub_def_matchs = sp.defenders_perf(get_players_data)
-    plot_results_subs = rm.draw_results_per_player()
+    plotSubAttMatchs = sp.attackersSubPerformances()
+    plotSubMidMatchs = sp.midfieldersSubPerformances()
+    plotSubDefMatchs = sp.defendersSubPerformances()
+    plotResultsSubs = rm.matchResultsPerPlayer()
 
     # Partie 4 :Analyse des matchs dans le temps
-    plot_times_matchs = tm.decisives_actions_matchs()
+    plotTimesMatchs = tm.decisivesActionsMatchs()
     
     return templates.TemplateResponse(
         "index.html", 
         {
             "request": request,
             # Partie 1
-            "plot_match1": plot_match1,
-            "plot_match2": plot_match2,
-            "plot_match3": plot_match3,
-            "plot_match4": plot_match4,
-            "plot_match5": plot_match5,
-            "plot_match6": plot_match6,
-            "plot_match7": plot_match7,
+            "plotMatch1": plotMatch1,
+            "plotMatch2": plotMatch2,
+            "plotMatch3": plotMatch3,
+            "plotMatch4": plotMatch4,
+            "plotMatch5": plotMatch5,
+            "plotMatch6": plotMatch6,
+            "plotMatch7": plotMatch7,
             # Partie 2 
-            "plot_att_matchs": plot_att_matchs,
-            "plot_mid_matchs": plot_mid_matchs,
-            "plot_def_matchs": plot_def_matchs,
+            "plotAttMatchs": plotAttMatchs,
+            "plotMidMatchs": plotMidMatchs,
+            "plotDefMatchs": plotDefMatchs,
             # Partie 3
-            "plot_sub_att_matchs": plot_sub_att_matchs,
-            "plot_sub_mid_matchs": plot_sub_mid_matchs,
-            "plot_sub_def_matchs": plot_sub_def_matchs,
-            "plot_results_subs": plot_results_subs,
+            "plotSubAttMatchs": plotSubAttMatchs,
+            "plotSubMidMatchs": plotSubMidMatchs,
+            "plotSubDefMatchs": plotSubDefMatchs,
+            "plotResultsSubs": plotResultsSubs,
             # Partie 4
-            "plot_times_matchs": plot_times_matchs
+            "plotTimesMatchs": plotTimesMatchs
         }
     )

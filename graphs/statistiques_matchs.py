@@ -6,17 +6,44 @@ import csv
 
 BASE_DIR = pathlib.Path(__file__).parent.parent
 
-def plot_totals(filename):
+def plotStatMatch1():
+    filename = os.path.join(BASE_DIR, 'data/Match 1 - Guinea-Bissau/', 'df2.csv')
+    return plotMatch(filename)
+
+def plotStatMatch2():
+    filename = os.path.join(BASE_DIR, 'data/Match 2 - Nigeria/', 'df2.csv')
+    return plotMatch(filename)
+
+def plotStatMatch3():
+    filename = os.path.join(BASE_DIR, 'data/Match 3 - Equatorial-Guinea/', 'df2.csv')
+    return plotMatch(filename)
+
+def plotStatMatch4():
+    filename = os.path.join(BASE_DIR, 'data/Match 4 - Senegal/', 'df2.csv')
+    return plotMatch(filename)
+
+def plotStatMatch5():
+    filename = os.path.join(BASE_DIR, 'data/Match 5 - Mali/', 'df2.csv')
+    return plotMatch(filename)
+
+def plotStatMatch6():
+    filename = os.path.join(BASE_DIR, 'data/Match 6 - Congo DR/', 'df2.csv')
+    return plotMatch(filename)
+
+def plotStatMatch7():
+    filename = os.path.join(BASE_DIR, 'data/Match 7 - Nigeria/', 'df2.csv')
+    return plotMatch(filename)
+
+def plotMatch(filename):
+    dataDict = {}
+
     with open(filename, 'r') as f:
-        reader = csv.reader(f, delimiter=';')
-        data_list = list(reader)
-    data_dict = {}
+        dataList = list(csv.reader(f, delimiter=';'))
 
-    for row in data_list[1:]:
-        country_data = {data_list[0][i]: int(row[i]) for i in range(1, len(data_list[0]))}
-        data_dict[row[0]] = country_data
+    for row in dataList[1:]:
+        dataDict[row[0]] = {dataList[0][i]: int(row[i]) for i in range(1, len(dataList[0]))}
 
-    for country, stat in data_dict.items():
+    for country, stat in dataDict.items():
         if country == 'Côte d\'Ivoire':
             homeName = country
             homeGoal = stat['Goals']
@@ -34,10 +61,10 @@ def plot_totals(filename):
     fig.add_annotation(
         go.layout.Annotation(
             text=f"{homeGoal} - {opponentGoal}",
-            xref="paper", x=0.5,  # Positionne l'annotation au centre en largeur
-            yref="paper", y=1.01,  # Positionne l'annotation en hauteur
-            xanchor='center',  # Centre le texte par rapport à sa position en x
-            yanchor='bottom',  # Align le texte par le bas par rapport à sa position en y
+            xref="paper", x=0.5,
+            yref="paper", y=1.01,
+            xanchor='center',
+            yanchor='bottom',
             showarrow=False,
             font=dict(size=30),
         ),
@@ -93,31 +120,3 @@ def plot_totals(filename):
     )
 
     return fig.to_html(full_html=False, config={'displayModeBar': False})
-
-def stat_match1():
-    filename = os.path.join(BASE_DIR, 'data/Match 1 - Guinea-Bissau/', 'df2.csv')
-    return plot_totals(filename)
-
-def stat_match2():
-    filename = os.path.join(BASE_DIR, 'data/Match 2 - Nigeria/', 'df2.csv')
-    return plot_totals(filename)
-
-def stat_match3():
-    filename = os.path.join(BASE_DIR, 'data/Match 3 - Equatorial-Guinea/', 'df2.csv')
-    return plot_totals(filename)
-
-def stat_match4():
-    filename = os.path.join(BASE_DIR, 'data/Match 4 - Senegal/', 'df2.csv')
-    return plot_totals(filename)
-
-def stat_match5():
-    filename = os.path.join(BASE_DIR, 'data/Match 5 - Mali/', 'df2.csv')
-    return plot_totals(filename)
-
-def stat_match6():
-    filename = os.path.join(BASE_DIR, 'data/Match 6 - Congo DR/', 'df2.csv')
-    return plot_totals(filename)
-
-def stat_match7():
-    filename = os.path.join(BASE_DIR, 'data/Match 7 - Nigeria/', 'df2.csv')
-    return plot_totals(filename)
