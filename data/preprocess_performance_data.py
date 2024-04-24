@@ -3,10 +3,7 @@ import csv
 import pathlib
 import data.results_matchs_subs_data as rm
 
-BASE_DIR = pathlib.Path(__file__).parent
-attackers = ["LW", "RW", "FW"]
-defenders = ["CB", "FB", "LB", "RB", "DF"]
-midfielders = ["DM", "CM", "LM", "RM", "WM", "AM", "MF"]
+BASE_DIR = pathlib.Path(__file__).parent.parent
 
 def getPlayersData():
     playersData = {}
@@ -30,6 +27,7 @@ def getPlayersData():
 
     match_7 = getPlayersDataByMatch("Match 7 - Nigeria")
     playersData['Match 7'] = createDictForPlayersInMatch(match_7)
+    playersData['Global'] = getPlayersGlobalPerformances()
     return playersData
 
 def createDictForPlayersInMatch(match):
@@ -52,8 +50,7 @@ def getPlayersDataByMatch(match):
     for line in data_list[1:]:  # Skip the header
         player = line[0]
 
-        players_stats[player] = [
-            {
+        players_stats[player] = {
                 "position": list(line[2].split(",")),
                 "shots": int(line[9]),
                 "shots_on_target": int(line[10]),
@@ -65,8 +62,6 @@ def getPlayersDataByMatch(match):
                 "isSub": ifPlayerSub(match, player)
 
             }
-        ]
-
     return players_stats
 
 
@@ -83,8 +78,7 @@ def getPlayersGlobalPerformances():
     for line in standard_data_list[1:25]:  # Skip the header
         player = line[0]
 
-        players_stats[player] = [
-            {
+        players_stats[player] = {
                 "position": list(line[1].split(",")),
                 "goals": int(float(line[4])),
                 "assists": int(float(line[5])),
@@ -93,10 +87,9 @@ def getPlayersGlobalPerformances():
                 "crosses": int(float(line[6])),
                 "tackles_won": int(float(line[8])),
                 "interceptions": int(float(line[7])),
-                "isSub": True
+                "isSub": False
             }
-        ]
-    return {'Global': players_stats}
+    return players_stats
 
 def ifPlayerSub(match, player):
     data = rm.data
