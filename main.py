@@ -3,6 +3,7 @@ import graphs.players_performance as pp
 import graphs.subs_performance as sp
 import graphs.statistiques_matchs as sm
 import graphs.time_matchs as tm
+import preprocess as pr
 from fastapi import FastAPI, Request # type: ignore
 from fastapi.responses import HTMLResponse # type: ignore
 from fastapi.templating import Jinja2Templates # type: ignore
@@ -30,13 +31,16 @@ async def get_charts(request: Request):
     plot_match6 = sm.stat_match6()
     plot_match7 = sm.stat_match7()
 
+    get_players_data = pr.getPlayersData()
+    get_players_global_performances = pr.getPlayersGlobalPerformances()
+
     # Partie 2 : Analyse des statistiques de l'ensemble des joueurs
-    plot_att_matchs = pp.attackers_perf_by_matchs()
-    plot_att_global = pp.attackers_perf_global() #TODO
-    plot_mid_matchs = pp.mid_perf_by_matchs()
-    plot_mid_global = pp.mid_perf_global() #TODO
-    plot_def_matchs = pp.defenders_perf_by_matchs()
-    plot_def_global = pp.defenders_perf_global() #TODO
+    plot_att_matchs = pp.attackers_perf(get_players_data)
+    plot_att_global = pp.attackers_perf(get_players_global_performances) 
+    plot_mid_matchs = pp.mid_perf(get_players_data)
+    plot_mid_global = pp.mid_perf(get_players_global_performances) 
+    plot_def_matchs = pp.defenders_perf(get_players_data)
+    plot_def_global = pp.defenders_perf(get_players_global_performances) 
 
     # Partie 3 : Analyse des statistiques des joueurs remplaçants
     plot_sub_att_matchs = sp.sub_attackers_perf_by_matchs()

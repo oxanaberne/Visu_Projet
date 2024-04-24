@@ -1,67 +1,56 @@
 from .graph_performance import *
+import os
+import csv
+import pathlib
 
-def attackers_perf_by_matchs():
-    players_data = {
-        'Joueur 1': [(2, 1, 1), (1, 1, 1), (3, 2, 1), (4, 2, 1), (3, 3, 2), (5, 3, 1), (2, 2, 1)],
-        'Joueur 2': [(3, 2, 1), (2, 2, 1), (4, 3, 2), (3, 1, 1), (2, 2, 1), (1, 1, 1), (3, 3, 2)],
-        'Joueur 3': [(1, 1, 0), (2, 1, 1), (1, 0, 0), (3, 2, 1), (4, 3, 2), (2, 2, 1), (1, 1, 1)],
-        'Joueur 4': [(0, 0, 0), (1, 1, 1), (2, 1, 1), (2, 2, 1), (3, 1, 1), (1, 0, 0), (2, 1, 1)],
-        'Joueur 5': [(2, 2, 1), (3, 2, 1), (1, 1, 1), (1, 1, 0), (2, 2, 2), (3, 3, 1), (4, 4, 2)],
-        'Joueur 6': [(1, 1, 1), (2, 2, 1), (3, 2, 2), (1, 1, 0), (3, 2, 1), (2, 2, 1), (1, 1, 1)],
-    }
-    return draw_graph_attackers(players_data)
+BASE_DIR = pathlib.Path(__file__).parent.parent
+attackers = ["LW", "RW", "FW"]
+defenders = ["CB", "FB", "LB", "RB", "DF"]
+midfielders = ["DM", "CM", "LM", "RM", "WM", "AM", "MF"]
 
-def attackers_perf_global():
-    players_data = {
-        'Joueur 1': [(3, 1, 0), (2, 1, 0), (3, 1, 1), (2, 2, 0), (3, 1, 1), (4, 1, 0), (2, 2, 1)],
-        'Joueur 2': [(2, 2, 1), (2, 1, 1), (3, 1, 0), (2, 1, 1), (3, 1, 1), (2, 1, 1), (1, 1, 1)],
-        'Joueur 3': [(1, 1, 1), (2, 1, 0), (2, 0, 0), (3, 1, 1), (2, 2, 1), (1, 1, 0), (2, 1, 1)],
-        'Joueur 4': [(2, 0, 0), (2, 1, 1), (1, 1, 0), (2, 1, 1), (2, 1, 1), (2, 1, 0), (3, 1, 1)],
-        'Joueur 5': [(1, 1, 1), (3, 2, 1), (2, 1, 0), (2, 1, 1), (2, 2, 1), (3, 2, 0), (1, 1, 1)],
-        'Joueur 6': [(3, 1, 0), (2, 2, 1), (2, 1, 1), (2, 1, 1), (3, 1, 0), (3, 2, 0), (2, 1, 1)],
-    }
-    return draw_graph_attackers(players_data)
 
-def mid_perf_by_matchs():
-    players_data = {
-        'Joueur 1': [(2, 1, 1, 0), (1, 1, 1, 0), (3, 2, 1, 0), (4, 2, 1, 0), (3, 3, 2, 0), (5, 3, 1, 1), (2, 2, 1, 1)],
-        'Joueur 2': [(3, 2, 1, 1), (2, 2, 1, 1), (4, 3, 2, 0), (3, 1, 1, 1), (2, 2, 1, 0), (1, 1, 1, 0), (3, 3, 2, 1)],
-        'Joueur 3': [(1, 1, 0, 0), (2, 1, 1, 0), (1, 0, 0, 1), (3, 2, 1, 0), (4, 3, 2, 1), (2, 2, 1, 0), (1, 1, 1, 2)],
-        'Joueur 4': [(0, 0, 0, 1), (1, 1, 1, 0), (2, 1, 1, 1), (2, 2, 1, 0), (3, 1, 1, 0), (1, 0, 0, 1), (2, 1, 1, 0)],
-        'Joueur 5': [(2, 2, 1, 0), (3, 2, 1, 0), (1, 1, 1, 2), (1, 1, 0, 2), (2, 2, 2, 1), (3, 3, 1, 1), (4, 4, 2, 0)],
-        'Joueur 6': [(1, 1, 1, 1), (2, 2, 1, 0), (3, 2, 2, 1), (1, 1, 0, 2), (3, 2, 1, 0), (2, 2, 1, 2), (1, 1, 1, 0)],
+def attackers_perf(players_data):
+    attackers_data = filter_players_by_position(players_data, attackers)
+    processed_data = {
+        player: [
+            (stat["shots"], stat["shots_on_target"], stat["goals"]) for stat in stats
+        ]
+        for player, stats in attackers_data.items()
     }
-    return draw_graph_mid(players_data)
+    return draw_graph_attackers(processed_data)
 
-def mid_perf_global():
-    players_data= {
-        'Joueur 1': [(3, 1, 2, 0), (2, 3, 1, 1), (4, 2, 0, 1), (1, 4, 2, 0), (3, 1, 3, 1), (2, 2, 1, 0), (4, 1, 2, 1)],
-        'Joueur 2': [(1, 2, 3, 1), (3, 1, 2, 0), (2, 4, 1, 1), (1, 3, 2, 0), (4, 1, 3, 1), (2, 1, 2, 0), (3, 2, 1, 1)],
-        'Joueur 3': [(2, 1, 4, 0), (3, 2, 1, 1), (1, 3, 2, 0), (4, 0, 3, 1), (2, 1, 1, 0), (1, 4, 2, 1), (3, 1, 2, 0)],
-        'Joueur 4': [(4, 2, 1, 0), (1, 3, 2, 1), (2, 1, 3, 0), (3, 2, 1, 1), (1, 4, 0, 0), (2, 3, 1, 1), (4, 1, 2, 0)],
-        'Joueur 5': [(2, 4, 1, 1), (1, 2, 3, 0), (3, 1, 2, 1), (2, 0, 4, 0), (1, 3, 1, 1), (4, 2, 0, 1), (3, 1, 2, 0)],
-        'Joueur 6': [(1, 3, 1, 0), (4, 2, 1, 1), (3, 1, 2, 0), (2, 4, 1, 1), (1, 2, 3, 0), (3, 0, 4, 1), (2, 1, 2, 0)],
+def mid_perf(players_data):
+    midfielders_data = filter_players_by_position(players_data, midfielders)
+    processed_data = {
+        player: [
+            (
+                stat["crosses"],
+                stat["tackles_won"],
+                stat["interceptions"],
+                stat["assists"],
+            )
+            for stat in stats
+        ]
+        for player, stats in midfielders_data.items()
     }
-    return draw_graph_mid(players_data)
+    return draw_graph_mid(processed_data)
 
-def defenders_perf_by_matchs():
-    players_data = {
-        'Joueur 1': [(1, 0), (1, 0), (1, 0), (1, 0), (2, 0), (1, 1), (1, 1)],
-        'Joueur 2': [(1, 1), (1, 1), (2, 0), (1, 1), (1, 0), (1, 0), (2, 1)],
-        'Joueur 3': [(0, 0), (1, 0), (0, 1), (1, 0), (2, 1), (1, 0), (1, 2)],
-        'Joueur 4': [(0, 1), (1, 0), (1, 1), (1, 0), (1, 0), (0, 1), (1, 0)],
-        'Joueur 5': [(1, 0), (1, 0), (1, 2), (0, 2), (2, 1), (1, 1), (2, 0)],
-        'Joueur 6': [(1, 1), (1, 0), (2, 1), (0, 2), (1, 0), (1, 2), (1, 0)],
-    }
-    return draw_graph_defenders(players_data)
 
-def defenders_perf_global():
-    players_data = {
-        'Joueur 1': [(2, 0), (0, 1), (1, 1), (2, 0), (1, 1), (2, 0), (0, 1)],
-        'Joueur 2': [(1, 1), (2, 0), (3, 1), (2, 1), (1, 0), (1, 1), (2, 0)],
-        'Joueur 3': [(1, 0), (1, 1), (0, 0), (1, 1), (2, 0), (1, 1), (1, 0)],
-        'Joueur 4': [(1, 0), (2, 1), (2, 0), (1, 1), (2, 0), (3, 1), (0, 0)],
-        'Joueur 5': [(3, 1), (2, 0), (1, 1), (0, 0), (2, 1), (1, 0), (3, 1)],
-        'Joueur 6': [(1, 0), (2, 1), (1, 1), (3, 0), (2, 1), (4, 0), (3, 1)],
+def defenders_perf(players_data):
+    defenders_data = filter_players_by_position(players_data, defenders)
+    processed_data = {
+        player: [(stat["tackles_won"], stat["interceptions"]) for stat in stats]
+        for player, stats in defenders_data.items()
     }
-    return draw_graph_defenders(players_data)
+    return draw_graph_defenders(processed_data)
+
+
+def filter_players_by_position(players_data, position_group):
+    filtered_data = {}
+    for player, stats in players_data.items():
+        for stat in stats:
+            if any(pos in position_group for pos in stat["position"]):
+                if player not in filtered_data:
+                    filtered_data[player] = []
+                filtered_data[player].append(stat)
+    return filtered_data
