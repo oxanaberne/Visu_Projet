@@ -1,9 +1,5 @@
 from .graph_performance import *
-import os
-import csv
-import pathlib
 
-BASE_DIR = pathlib.Path(__file__).parent.parent
 attackers = ["LW", "RW", "FW"]
 defenders = ["CB", "FB", "LB", "RB", "DF"]
 midfielders = ["DM", "CM", "LM", "RM", "WM", "AM", "MF"]

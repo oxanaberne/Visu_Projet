@@ -1,6 +1,7 @@
 import os
 import csv
 import pathlib
+import data.results_matchs_subs_data as rm
 
 BASE_DIR = pathlib.Path(__file__).parent
 attackers = ["LW", "RW", "FW"]
@@ -61,6 +62,8 @@ def getPlayersDataByMatch(match):
                 "crosses": int(line[16]),
                 "tackles_won": int(line[17]),
                 "interceptions": int(line[18]),
+                "isSub": ifPlayerSub(match, player)
+
             }
         ]
 
@@ -90,6 +93,16 @@ def getPlayersGlobalPerformances():
                 "crosses": int(float(line[6])),
                 "tackles_won": int(float(line[8])),
                 "interceptions": int(float(line[7])),
+                "isSub": True
             }
         ]
     return {'Global': players_stats}
+
+def ifPlayerSub(match, player):
+    data = rm.data
+    format_match = match.split(" - ")[0]
+    for data_match, stats in data.items():
+        if data_match == format_match:
+            if(player in stats['Players']):
+                return True
+    return False
