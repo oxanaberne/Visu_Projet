@@ -15,6 +15,8 @@ def process_attackers_perf(attackers_data):
                 transformed_data[player].append((shots, shots_on_target, goals))
             else:
                 transformed_data[player].append((0, 0, 0))
+            if len(transformed_data[player]) == 8 and isRecordEmpty(transformed_data[player]):
+                del transformed_data[player]
             
     return transformed_data
 
@@ -35,6 +37,9 @@ def process_mid_perf(midfielders_data):
                 transformed_data[player].append((assists, crosses, interceptions, tackles))
             else:
                 transformed_data[player].append((0, 0, 0, 0))
+            if len(transformed_data[player]) == 8 and isRecordEmpty(transformed_data[player]):
+                del transformed_data[player]
+                
     return transformed_data
 
 def process_defenders_perf(defenders_data):
@@ -53,6 +58,9 @@ def process_defenders_perf(defenders_data):
                 transformed_data[player].append((interceptions, tackles))
             else:
                 transformed_data[player].append((0, 0))
+            if len(transformed_data[player]) == 8 and isRecordEmpty(transformed_data[player]):
+                del transformed_data[player]
+
     return transformed_data
 
 def filter_players_by_position(players_data, position_group, IsSub):
@@ -69,3 +77,6 @@ def filter_players_by_position(players_data, position_group, IsSub):
                     filtered_data[nbMatch][playerName] = {}
                 filtered_data[nbMatch][playerName].update(stats)
     return filtered_data
+
+def isRecordEmpty(data):
+    return all(all(valeur == 0 for valeur in tuple) for tuple in data)

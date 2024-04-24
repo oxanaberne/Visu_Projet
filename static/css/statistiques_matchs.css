@@ -2,7 +2,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 6px;
+    padding: 2%;
 }
 
 #stat-matchs-global {
@@ -15,10 +16,11 @@
     width: 100%;
     justify-content: center;
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .match-button{
-    padding: 10px 20px;
+    padding: 5px 10px;
     border: none;
     background-color: #00723f;
     color: white;
