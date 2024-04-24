@@ -9,6 +9,7 @@ def draw_graph_attackers(data):
     colors = ['#fa7704', '#fcab5a', '#ffe45b']
 
     # Petit multiple avec Plotly pour chaque joueur
+    subplot_titles = [f'{player}' for player in data.keys()]
     fig = make_subplots(rows=rows, cols=cols, subplot_titles=[f'{player}' for player in data.keys()])
 
     for index, (player, stats) in enumerate(data.items()):
@@ -41,8 +42,9 @@ def draw_graph_attackers(data):
     fig.update_layout(
         width=650,
         showlegend=False,
+        height=200 * rows,
         barmode='stack',
-        margin=dict(l=0, r=0, t=0, b=0)
+        margin=dict(l=0, r=0, t=40, b=0),
     )
     return fig.to_html(full_html=False, config={'displayModeBar': False})
 
@@ -51,6 +53,7 @@ def draw_graph_mid(data):
     cols = 3
     # Passe, Centres, Interception, Tacles
     colors = ['#244fa0', '#5b87da', '#97B54A', '#597318']
+    fig_height = 200 * rows  # Adjust height based on the new bar thickness
 
     # Petit multiple avec Plotly pour chaque joueur
     fig = make_subplots(rows=rows, cols=cols, subplot_titles=[f'{player}' for player in data.keys()])
@@ -89,9 +92,10 @@ def draw_graph_mid(data):
 
     fig.update_layout(
         width=650,
+        height=fig_height,
         showlegend=False,
         barmode='stack',
-        margin=dict(l=0, r=0, t=0, b=0)
+        margin=dict(l=0, r=0, t=40, b=0)
     )
     return fig.to_html(full_html=False, config={'displayModeBar': False})
 
@@ -100,6 +104,7 @@ def draw_graph_defenders(data):
     cols = 3
     # Interception, Tacles
     colors = ['#97B54A', '#597318']
+    fig_height = 200 * rows  # Adjust height based on the new bar thickness
 
     # Petit multiple avec Plotly pour chaque joueur
     fig = make_subplots(rows=rows, cols=cols, subplot_titles=[f'{player}' for player in data.keys()])
@@ -126,8 +131,9 @@ def draw_graph_defenders(data):
 
     fig.update_layout(
         width=650,
+        height=fig_height,
         showlegend=False,
         barmode='stack',
-        margin=dict(l=0, r=0, t=0, b=0)
+        margin=dict(l=0, r=0, t=40, b=0)
     )
     return fig.to_html(full_html=False, config={'displayModeBar': False})
