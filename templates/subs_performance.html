@@ -2,6 +2,12 @@
 <link rel="stylesheet" href="/static/css/subs_performance.css">
 
 <h2>Statistiques des joueurs remplaçants par positions</h2>
+<p class="texte">
+    De la même manière qu'avec les visualisations précédentes, les visualisations suivantes permettent d'analyser l'impact des joueurs remplaçants lors des matchs 
+    en fonction de leur position sur le terrain. Analysez leur impact match par match et saisissez la régularité ou les pics de performance qui témoignent de leur 
+    rôle pivot en tant que remplaçant dans l'équipe. En plus d'une analyse match par match, une barre supplémentaire dans les visualisations démontre leur 
+    performance global dans la compétition. Explorez les différentes statistiques des joueurs en fonction de leur position à travers les différents onglets.
+</p>
 <div id="sub-nav-bar">
     <button id="sub-att-button" class="sub-perf-button" onclick="showSubType('sub-attackers', 'sub-att-button')">Attaquants</button>
     <button id="sub-mid-button" class="sub-perf-button" onclick="showSubType('sub-mid', 'sub-mid-button')">Milieux de terrain et défenseurs</button>
@@ -9,10 +15,6 @@
 </div>
 
 <div id="sub-attackers" class="sub-content-section">
-    <div class="buttons-container">
-        <button id="sub-att-matchs-button" class="sub-perf-button" onclick="showContentSub('sub-attackers-matchs')">À travers les matchs</button>
-        <button id="sub-att-global-button" class="sub-perf-button" onclick="showContentSub('sub-attackers-global')">Global</button>
-    </div>
     <div class="legend">
         <div style="margin-right: 10px;"><span style="background-color: #fa7704; width: 20px; height: 20px; display: inline-block;"></span> Nombre de tirs tentés</div>
         <div style="margin-right: 10px;"><span style="background-color: #fcab5a; width: 20px; height: 20px; display: inline-block;"></span> Nombre de tirs cadrés</div>
@@ -22,16 +24,9 @@
     <div id="sub-attackers-matchs" class="sub-graph-section">
         {{ plot_sub_att_matchs | safe }}
     </div>
-    <div id="sub-attackers-global" class="sub-graph-section">
-        {{ plot_sub_att_global | safe }}
-    </div>
 </div>
 
 <div id="sub-mid" class="sub-content-section">
-    <div class="buttons-container">
-        <button id="sub-mid-matchs-button" class="sub-perf-button" onclick="showContentSub('sub-mid-matchs')">À travers les matchs</button>
-        <button id="sub-mid-global-button" class="sub-perf-button" onclick="showContentSub('sub-mid-global')">Global</button>
-    </div>
     <div class="legend">
         <div style="margin-right: 10px;"><span style="background-color: #244fa0; width: 20px; height: 20px; display: inline-block;"></span> Nombre de passe décisive</div>
         <div style="margin-right: 10px;"><span style="background-color: #5b87da; width: 20px; height: 20px; display: inline-block;"></span> Nombre de centres</div>
@@ -42,27 +37,16 @@
     <div id="sub-mid-matchs" class="sub-graph-section">
         {{ plot_sub_mid_matchs | safe }}
     </div>
-    <div id="sub-mid-global" class="sub-graph-section">
-        {{ plot_sub_mid_global | safe }}
-    </div>
 </div>
 
 <div id="sub-defenders" class="sub-content-section">
-    <div class="buttons-container">
-        <button id="sub-def-matchs-button" class="sub-perf-button" onclick="showContentSub('sub-defenders-matchs')">À travers les matchs</button>
-        <button id="sub-def-global-button" class="sub-perf-button" onclick="showContentSub('sub-defenders-global')">Global</button>
-    </div>
     <div class="legend">
         <div style="margin-right: 10px;"><span style="background-color: #97B54A; width: 20px; height: 20px; display: inline-block;"></span> Nombre d'interceptions</div>
         <div><span style="background-color: #597318; width: 20px; height: 20px; display: inline-block;"></span> Nombre de tacles gagnés</div>
     </div>
-    
     <!-- Contenu pour les défenseurs -->
     <div id="sub-defenders-matchs" class="sub-graph-section">
         {{ plot_sub_def_matchs | safe }}
-    </div>
-    <div id="sub-defenders-global" class="sub-graph-section">
-        {{ plot_sub_def_global | safe }}
     </div>
 </div>
 

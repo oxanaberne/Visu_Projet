@@ -2,6 +2,14 @@
 <link rel="stylesheet" href="/static/css/players_performance.css">
 
 <h2>Statistiques pour l'ensemble des joueurs par positions</h2>
+<p class="texte">
+    Plongez dans le cœur tactique du jeu avec ces visualisations comparative des contributions spécifiques des joueurs tout au long de la compétition en fonction de leur 
+    position sur le terrain. Analysez leur impact match par match et saisissez la régularité ou les pics de performance qui témoignent de leur rôle pivot dans l'équipe.
+    Ici, les statistiques de performance concernent seulement les joueurs principaux dans les matchs (pas les joueurs remplaçants). 
+    En plus d'une analyse match par match, une barre supplémentaire dans les visualisations démontre leur performance global dans la compétition. Si un graphique apparait 
+    pour un joueur mais qu'il n'y a aucune donnée, cela indique que le joueur a joué pendant la compétition mais qu'il n'a pas contribué de manière significative.
+    Explorez les différentes statistiques des joueurs en fonction de leur position à travers les différents onglets.
+</p>
 <div id="nav-bar">
     <button id="att-button" class="perf-button" onclick="showPlayerType('attackers', 'att-button')">Attaquants</button>
     <button id="mid-button" class="perf-button" onclick="showPlayerType('mid', 'mid-button')">Milieux de terrain et défenseurs</button>
@@ -9,10 +17,6 @@
 </div>
 
 <div id="attackers" class="content-section">
-    <div class="buttons-container">
-        <button id="att-matchs-button" class="perf-button" onclick="showContent('attackers-matchs')">À travers les matchs</button>
-        <button id="att-global-button" class="perf-button" onclick="showContent('attackers-global')">Global</button>
-    </div>
     <div class="legend">
         <div style="margin-right: 10px;"><span style="background-color: #fa7704; width: 20px; height: 20px; display: inline-block;"></span> Nombre de tirs tentés</div>
         <div style="margin-right: 10px;"><span style="background-color: #fcab5a; width: 20px; height: 20px; display: inline-block;"></span> Nombre de tirs cadrés</div>
@@ -22,16 +26,9 @@
     <div id="attackers-matchs" class="graph-section">
         {{ plot_att_matchs | safe }}
     </div>
-    <div id="attackers-global" class="graph-section">
-        {{ plot_att_global | safe }}
-    </div>
 </div>
 
 <div id="mid" class="content-section">
-    <div class="buttons-container">
-        <button id="mid-matchs-button" class="perf-button" onclick="showContent('mid-matchs')">À travers les matchs</button>
-        <button id="mid-global-button" class="perf-button" onclick="showContent('mid-global')">Global</button>
-    </div>
     <div class="legend">
         <div style="margin-right: 10px;"><span style="background-color: #244fa0; width: 20px; height: 20px; display: inline-block;"></span> Nombre de passe décisive</div>
         <div style="margin-right: 10px;"><span style="background-color: #5b87da; width: 20px; height: 20px; display: inline-block;"></span> Nombre de centres</div>
@@ -42,26 +39,15 @@
     <div id="mid-matchs" class="graph-section">
         {{ plot_mid_matchs | safe }}
     </div>
-    <div id="mid-global" class="graph-section">
-        {{ plot_mid_global | safe }}
-    </div>
 </div>
 
 <div id="defenders" class="content-section">
-    <div class="buttons-container">
-        <button id="def-matchs-button" class="perf-button" onclick="showContent('defenders-matchs')">À travers les matchs</button>
-        <button id="def-global-button" class="perf-button" onclick="showContent('defenders-global')">Global</button>
-    </div>
     <div class="legend">
         <div style="margin-right: 10px;"><span style="background-color: #97B54A; width: 20px; height: 20px; display: inline-block;"></span> Nombre d'interceptions</div>
         <div><span style="background-color: #597318; width: 20px; height: 20px; display: inline-block;"></span> Nombre de tacles gagnés</div>
     </div>
-
     <!-- Contenu pour les défenseurs -->
     <div id="defenders-matchs" class="graph-section">
         {{ plot_def_matchs | safe }}
-    </div>
-    <div id="defenders-global" class="graph-section">
-        {{ plot_def_global | safe }}
     </div>
 </div>

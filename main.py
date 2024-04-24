@@ -4,7 +4,7 @@ import graphs.subs_performance as sp
 import graphs.results_matchs_subs as rm
 import graphs.statistiques_matchs as sm
 import graphs.time_matchs as tm
-import preprocess as pr
+import data.preprocess_performance_data as pr
 from fastapi import FastAPI, Request # type: ignore
 from fastapi.responses import HTMLResponse # type: ignore
 from fastapi.templating import Jinja2Templates # type: ignore
@@ -33,23 +33,16 @@ async def get_charts(request: Request):
     plot_match7 = sm.stat_match7()
 
     get_players_data = pr.getPlayersData()
-    get_players_global_performances = pr.getPlayersGlobalPerformances()
 
     # Partie 2 : Analyse des statistiques de l'ensemble des joueurs
     plot_att_matchs = pp.attackers_perf(get_players_data)
-    plot_att_global = pp.attackers_perf(get_players_global_performances) 
     plot_mid_matchs = pp.mid_perf(get_players_data)
-    plot_mid_global = pp.mid_perf(get_players_global_performances) 
     plot_def_matchs = pp.defenders_perf(get_players_data)
-    plot_def_global = pp.defenders_perf(get_players_global_performances) 
 
     # Partie 3 : Analyse des statistiques des joueurs remplaçants
     plot_sub_att_matchs = sp.attackers_perf(get_players_data)
-    plot_sub_att_global = sp.attackers_perf(get_players_global_performances)
     plot_sub_mid_matchs = sp.mid_perf(get_players_data)
-    plot_sub_mid_global = sp.mid_perf(get_players_global_performances)
     plot_sub_def_matchs = sp.defenders_perf(get_players_data)
-    plot_sub_def_global = sp.defenders_perf(get_players_global_performances)
     plot_results_subs = rm.draw_results_per_player()
 
     # Partie 4 :Analyse des matchs dans le temps
@@ -69,18 +62,12 @@ async def get_charts(request: Request):
             "plot_match7": plot_match7,
             # Partie 2 
             "plot_att_matchs": plot_att_matchs,
-            "plot_att_global": plot_att_global,
             "plot_mid_matchs": plot_mid_matchs,
-            "plot_mid_global": plot_mid_global,
             "plot_def_matchs": plot_def_matchs,
-            "plot_def_global": plot_def_global,
             # Partie 3
             "plot_sub_att_matchs": plot_sub_att_matchs,
-            "plot_sub_att_global": plot_sub_att_global,
             "plot_sub_mid_matchs": plot_sub_mid_matchs,
-            "plot_sub_mid_global": plot_sub_mid_global,
             "plot_sub_def_matchs": plot_sub_def_matchs,
-            "plot_sub_def_global": plot_sub_def_global,
             "plot_results_subs": plot_results_subs,
             # Partie 4
             "plot_times_matchs": plot_times_matchs
