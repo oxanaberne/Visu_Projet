@@ -4,34 +4,35 @@ import plotly.graph_objects as go # type: ignore
 import os
 import csv
 
-BASE_DIR = pathlib.Path(__file__).parent.parent
+# BASE_DIR = pathlib.Path(__file__).parent.parent
+BASE_DIR = os.getcwd()
 
 def plotStatMatch1():
-    filename = os.path.join(BASE_DIR, 'data/Match 1 - Guinea-Bissau/', 'df2.csv')
+    filename = os.path.join(BASE_DIR, 'data/Match1-Guinee-Bissau/', 'df2.csv')
     return plotMatch(filename)
 
 def plotStatMatch2():
-    filename = os.path.join(BASE_DIR, 'data/Match 2 - Nigeria/', 'df2.csv')
+    filename = os.path.join(BASE_DIR, 'data/Match2-Nigeria/', 'df2.csv')
     return plotMatch(filename)
 
 def plotStatMatch3():
-    filename = os.path.join(BASE_DIR, 'data/Match 3 - Equatorial-Guinea/', 'df2.csv')
+    filename = os.path.join(BASE_DIR, 'data/Match3-Guinee-Equatoriale/', 'df2.csv')
     return plotMatch(filename)
 
 def plotStatMatch4():
-    filename = os.path.join(BASE_DIR, 'data/Match 4 - Senegal/', 'df2.csv')
+    filename = os.path.join(BASE_DIR, 'data/Match4-Senegal/', 'df2.csv')
     return plotMatch(filename)
 
 def plotStatMatch5():
-    filename = os.path.join(BASE_DIR, 'data/Match 5 - Mali/', 'df2.csv')
+    filename = os.path.join(BASE_DIR, 'data/Match5-Mali/', 'df2.csv')
     return plotMatch(filename)
 
 def plotStatMatch6():
-    filename = os.path.join(BASE_DIR, 'data/Match 6 - Congo DR/', 'df2.csv')
+    filename = os.path.join(BASE_DIR, 'data/Match6-RDC/', 'df2.csv')
     return plotMatch(filename)
 
 def plotStatMatch7():
-    filename = os.path.join(BASE_DIR, 'data/Match 7 - Nigeria/', 'df2.csv')
+    filename = os.path.join(BASE_DIR, 'data/Match7-Nigeria/', 'df2.csv')
     return plotMatch(filename)
 
 def plotMatch(filename):

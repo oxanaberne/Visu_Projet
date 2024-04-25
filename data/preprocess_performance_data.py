@@ -108,25 +108,25 @@ def isRecordEmpty(data):
 
 def getPlayersData():
     playersData = {}
-    match1 = getPlayersDataByMatch("Match 1 - Guinea-Bissau")
+    match1 = getPlayersDataByMatch("Match1-Guinee-Bissau")
     playersData['Match 1'] = createDictForPlayersInMatch(match1)
 
-    match2 = getPlayersDataByMatch("Match 2 - Nigeria")
+    match2 = getPlayersDataByMatch("Match2-Nigeria")
     playersData['Match 2'] = createDictForPlayersInMatch(match2)
 
-    match3 = getPlayersDataByMatch("Match 3 - Equatorial-Guinea")
+    match3 = getPlayersDataByMatch("Match3-Guinee-Equatoriale")
     playersData['Match 3'] = createDictForPlayersInMatch(match3)
 
-    match4 = getPlayersDataByMatch("Match 4 - Senegal")
+    match4 = getPlayersDataByMatch("Match4-Senegal")
     playersData['Match 4'] = createDictForPlayersInMatch(match4)
-
-    match5 = getPlayersDataByMatch("Match 5 - Mali")
+    
+    match5 = getPlayersDataByMatch("Match5-Mali")
     playersData['Match 5'] = createDictForPlayersInMatch(match5)
-
-    match6 = getPlayersDataByMatch("Match 6 - Congo DR")
+    
+    match6 = getPlayersDataByMatch("Match6-RDC")
     playersData['Match 6'] = createDictForPlayersInMatch(match6)
-
-    match7 = getPlayersDataByMatch("Match 7 - Nigeria")
+    
+    match7 = getPlayersDataByMatch("Match7-Nigeria")
     playersData['Match 7'] = createDictForPlayersInMatch(match7)
     playersData['Global'] = getPlayersGlobalPerformances()
     return playersData
@@ -155,7 +155,7 @@ def getPlayersDataByMatch(match):
 
 def getPlayersGlobalPerformances():
     filename = os.path.join(
-        BASE_DIR, f"data/Global performances/", "standard_stats.csv"
+        BASE_DIR, f"data/Global-Performances/", "standard_stats.csv"
     )
 
     with open(filename, "r") as f:
@@ -180,10 +180,10 @@ def getPlayersGlobalPerformances():
 
 def isPlayerASub(match, player):
     data = rm.data
-    matchFormat = match.split(" - ")[0]
-    for matchData, stats in data.items():
+    matchFormat = 'Match ' + match.split("-")[0][-1]
+    for matchNumber, stats in data.items():
         isPlayerInStats = player in stats['Players']
-        if matchData == matchFormat and isPlayerInStats:
+        if matchFormat == matchNumber and isPlayerInStats:
             return True
     return False
 
