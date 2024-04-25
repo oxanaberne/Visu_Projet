@@ -63,7 +63,7 @@ def plotMatch(filename):
         go.layout.Annotation(
             text=f"{homeGoal} - {opponentGoal}",
             xref="paper", x=0.5,
-            yref="paper", y=1.01,
+            yref="paper", y=1.08,
             xanchor='center',
             yanchor='bottom',
             showarrow=False,
@@ -78,7 +78,6 @@ def plotMatch(filename):
         base=0,
         text=[value for value in homeDict.values()],
         textposition='auto',
-        hoverinfo='none',
         orientation='h',
         marker_color='green'
     ))
@@ -90,7 +89,6 @@ def plotMatch(filename):
         base=0,
         text=list(opponentDict.values()),
         textposition='auto',
-        hoverinfo='none',
         orientation='h',
         marker_color='orange'
     ))
@@ -108,8 +106,8 @@ def plotMatch(filename):
             automargin=True
         ),
         plot_bgcolor='white',
-        width=650,
-        height=350,
+        width=800,
+        height=400,
         margin=dict(l=0, r=0, t=80, b=0),
         legend=dict(
             orientation="h",
