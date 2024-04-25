@@ -1,6 +1,6 @@
 #players-by-position {
     text-align: center;
-    padding-top: 10px;
+    padding-top: 5%;
 }
 
 #nav-bar {
@@ -8,6 +8,7 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
+    padding: 3%;
 }
 
 #attackers {

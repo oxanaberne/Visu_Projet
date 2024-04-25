@@ -54,7 +54,7 @@ def formatDataAttackers(attackersData):
                 transformedData[player].append((shots, shotsOnTarget, goals))
             else:
                 transformedData[player].append((0, 0, 0))
-            if len(transformedData[player]) == 8 and isRecordEmpty(transformedData[player]):
+            if len(transformedData[player]) == 7 and isRecordEmpty(transformedData[player]):
                 del transformedData[player]
             
     return transformedData
@@ -76,7 +76,7 @@ def formatDataMidfielders(midfieldersData):
                 transformedData[player].append((assists, crosses, interceptions, tackles))
             else:
                 transformedData[player].append((0, 0, 0, 0))
-            if len(transformedData[player]) == 8 and isRecordEmpty(transformedData[player]):
+            if len(transformedData[player]) == 7 and isRecordEmpty(transformedData[player]):
                 del transformedData[player]
                 
     return transformedData
@@ -97,7 +97,7 @@ def formatDataDefenders(defendersData):
                 transformedData[player].append((interceptions, tackles))
             else:
                 transformedData[player].append((0, 0))
-            if len(transformedData[player]) == 8 and isRecordEmpty(transformedData[player]):
+            if len(transformedData[player]) == 7 and isRecordEmpty(transformedData[player]):
                 del transformedData[player]
 
     return transformedData
@@ -108,27 +108,26 @@ def isRecordEmpty(data):
 
 def getPlayersData():
     playersData = {}
-    match1 = getPlayersDataByMatch("Match 1 - Guinea-Bissau")
+    match1 = getPlayersDataByMatch("Match1-Guinee-Bissau")
     playersData['Match 1'] = createDictForPlayersInMatch(match1)
 
-    match2 = getPlayersDataByMatch("Match 2 - Nigeria")
+    match2 = getPlayersDataByMatch("Match2-Nigeria")
     playersData['Match 2'] = createDictForPlayersInMatch(match2)
 
-    match3 = getPlayersDataByMatch("Match 3 - Equatorial-Guinea")
+    match3 = getPlayersDataByMatch("Match3-Guinee-Equatoriale")
     playersData['Match 3'] = createDictForPlayersInMatch(match3)
 
-    match4 = getPlayersDataByMatch("Match 4 - Senegal")
+    match4 = getPlayersDataByMatch("Match4-Senegal")
     playersData['Match 4'] = createDictForPlayersInMatch(match4)
-
-    match5 = getPlayersDataByMatch("Match 5 - Mali")
+    
+    match5 = getPlayersDataByMatch("Match5-Mali")
     playersData['Match 5'] = createDictForPlayersInMatch(match5)
-
-    match6 = getPlayersDataByMatch("Match 6 - Congo DR")
+    
+    match6 = getPlayersDataByMatch("Match6-RDC")
     playersData['Match 6'] = createDictForPlayersInMatch(match6)
-
-    match7 = getPlayersDataByMatch("Match 7 - Nigeria")
+    
+    match7 = getPlayersDataByMatch("Match7-Nigeria")
     playersData['Match 7'] = createDictForPlayersInMatch(match7)
-    playersData['Global'] = getPlayersGlobalPerformances()
     return playersData
 
 def getPlayersDataByMatch(match):
@@ -153,37 +152,12 @@ def getPlayersDataByMatch(match):
     
     return playersStats
 
-def getPlayersGlobalPerformances():
-    filename = os.path.join(
-        BASE_DIR, f"data/Global performances/", "standard_stats.csv"
-    )
-
-    with open(filename, "r") as f:
-        dataList = list(csv.reader(f, delimiter=";"))
-
-    playersStats = {}
-    for line in dataList[1:25]:
-        player = line[0]
-        playersStats[player] = {
-                "position": list(line[1].split(",")),
-                "goals": int(float(line[4])),
-                "assists": int(float(line[5])),
-                "shots": int(float(line[9])),
-                "shots_on_target": int(float(line[10])),
-                "crosses": int(float(line[6])),
-                "tackles_won": int(float(line[8])),
-                "interceptions": int(float(line[7])),
-                "isSub": False
-            }
-    
-    return playersStats
-
 def isPlayerASub(match, player):
     data = rm.data
-    matchFormat = match.split(" - ")[0]
-    for matchData, stats in data.items():
+    matchFormat = 'Match ' + match.split("-")[0][-1]
+    for matchNumber, stats in data.items():
         isPlayerInStats = player in stats['Players']
-        if matchData == matchFormat and isPlayerInStats:
+        if matchFormat == matchNumber and isPlayerInStats:
             return True
     return False
 
