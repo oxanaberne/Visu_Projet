@@ -54,7 +54,7 @@ def formatDataAttackers(attackersData):
                 transformedData[player].append((shots, shotsOnTarget, goals))
             else:
                 transformedData[player].append((0, 0, 0))
-            if len(transformedData[player]) == 8 and isRecordEmpty(transformedData[player]):
+            if len(transformedData[player]) == 7 and isRecordEmpty(transformedData[player]):
                 del transformedData[player]
             
     return transformedData
@@ -76,7 +76,7 @@ def formatDataMidfielders(midfieldersData):
                 transformedData[player].append((assists, crosses, interceptions, tackles))
             else:
                 transformedData[player].append((0, 0, 0, 0))
-            if len(transformedData[player]) == 8 and isRecordEmpty(transformedData[player]):
+            if len(transformedData[player]) == 7 and isRecordEmpty(transformedData[player]):
                 del transformedData[player]
                 
     return transformedData
@@ -97,7 +97,7 @@ def formatDataDefenders(defendersData):
                 transformedData[player].append((interceptions, tackles))
             else:
                 transformedData[player].append((0, 0))
-            if len(transformedData[player]) == 8 and isRecordEmpty(transformedData[player]):
+            if len(transformedData[player]) == 7 and isRecordEmpty(transformedData[player]):
                 del transformedData[player]
 
     return transformedData
@@ -128,7 +128,6 @@ def getPlayersData():
     
     match7 = getPlayersDataByMatch("Match7-Nigeria")
     playersData['Match 7'] = createDictForPlayersInMatch(match7)
-    playersData['Global'] = getPlayersGlobalPerformances()
     return playersData
 
 def getPlayersDataByMatch(match):
@@ -149,31 +148,6 @@ def getPlayersDataByMatch(match):
                 "tackles_won": int(line[17]),
                 "interceptions": int(line[18]),
                 "isSub": isPlayerASub(match, player)
-            }
-    
-    return playersStats
-
-def getPlayersGlobalPerformances():
-    filename = os.path.join(
-        BASE_DIR, f"data/Global-Performances/", "standard_stats.csv"
-    )
-
-    with open(filename, "r") as f:
-        dataList = list(csv.reader(f, delimiter=";"))
-
-    playersStats = {}
-    for line in dataList[1:25]:
-        player = line[0]
-        playersStats[player] = {
-                "position": list(line[1].split(",")),
-                "goals": int(float(line[4])),
-                "assists": int(float(line[5])),
-                "shots": int(float(line[9])),
-                "shots_on_target": int(float(line[10])),
-                "crosses": int(float(line[6])),
-                "tackles_won": int(float(line[8])),
-                "interceptions": int(float(line[7])),
-                "isSub": False
             }
     
     return playersStats

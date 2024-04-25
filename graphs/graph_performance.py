@@ -1,7 +1,7 @@
 import plotly.graph_objs as go # type: ignore
 from plotly.subplots import make_subplots # type: ignore
 
-y_label = ['Match 1', 'Match 2', 'Match 3', 'Match 4', 'Match 5', 'Match 6', 'Match 7', 'Global'] 
+y_label = ['Match 1', 'Match 2', 'Match 3', 'Match 4', 'Match 5', 'Match 6', 'Match 7'] 
 
 def drawGraphAttackers(data):
     rows = (len(data) + 1) // 2 
@@ -11,7 +11,7 @@ def drawGraphAttackers(data):
 
     # Petit multiple avec Plotly pour chaque joueur
     fig = make_subplots(rows=rows, cols=cols, subplot_titles=[f'{player}' for player in data.keys()])
-
+    maxVal = 0
     for index, (player, stats) in enumerate(data.items()):
         row = index // cols + 1
         col = index % cols + 1
@@ -37,15 +37,16 @@ def drawGraphAttackers(data):
                 orientation='h',
                 hoverinfo='none',
             ), row=row, col=col)
-            fig.update_xaxes(tickmode='array', tickvals=[i + 1 for i in range(tirs_tentes)], row=row, col=col)
+            maxVal = max(maxVal, tirs_tentes)
 
     fig.update_layout(
-        width=650,
+        width=400 * cols,
         showlegend=False,
         height=250 * rows,
         barmode='stack',
         margin=dict(l=0, r=0, t=40, b=0),
     )
+    fig.update_xaxes(tickmode='array', tickvals=[i + 1 for i in range(maxVal)], tickangle=45)
     return fig.to_html(full_html=False, config={'displayModeBar': False})
 
 def drawGraphMid(data):
@@ -56,7 +57,7 @@ def drawGraphMid(data):
 
     # Petit multiple avec Plotly pour chaque joueur
     fig = make_subplots(rows=rows, cols=cols, subplot_titles=[f'{player}' for player in data.keys()])
-
+    maxVal = 0
     for index, (player, stats) in enumerate(data.items()):
         row = index // cols + 1
         col = index % cols + 1
@@ -89,15 +90,15 @@ def drawGraphMid(data):
                 orientation='h',
                 hoverinfo='none',
             ), row=row, col=col)
-            fig.update_xaxes(tickmode='array', tickvals=[i + 1 for i in range(passe + centres + tacles + interception)], row=row, col=col)
-            
+            maxVal = max(maxVal, passe + centres + tacles + interception)            
     fig.update_layout(
-        width=650,
+        width=400 * cols,
         height=200 * rows,
         showlegend=False,
         barmode='stack',
         margin=dict(l=0, r=0, t=40, b=0)
     )
+    fig.update_xaxes(tickmode='array', tickvals=[i + 1 for i in range(maxVal)], tickangle=45)
     return fig.to_html(full_html=False, config={'displayModeBar': False})
 
 def drawGraphDefenders(data):
@@ -108,7 +109,7 @@ def drawGraphDefenders(data):
 
     # Petit multiple avec Plotly pour chaque joueur
     fig = make_subplots(rows=rows, cols=cols, subplot_titles=[f'{player}' for player in data.keys()])
-
+    maxVal = 0
     for index, (player, stats) in enumerate(data.items()):
         row = index // cols + 1
         col = index % cols + 1
@@ -127,14 +128,14 @@ def drawGraphDefenders(data):
                 orientation='h',
                 hoverinfo='none',
             ), row=row, col=col)
-            
-            fig.update_xaxes(tickmode='array', tickvals=[i + 1 for i in range(tacles + interception)], row=row, col=col)
+            maxVal = max(maxVal, tacles + interception)
 
     fig.update_layout(
-        width=650,
+        width=400 * cols,
         height=200 * rows,
         showlegend=False,
         barmode='stack',
         margin=dict(l=0, r=0, t=40, b=0)
     )
+    fig.update_xaxes(tickmode='array', tickvals=[i + 1 for i in range(maxVal)], tickangle=45)
     return fig.to_html(full_html=False, config={'displayModeBar': False})
